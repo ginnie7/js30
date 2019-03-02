@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crazy Clock</title>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock-face">
+        <div id="clock-center"></div>
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+    <style>
+      html {
+        background: #f7f7f7; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #c6426e,
+          #642b73
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #f7f7f7,
+          #d2cec1
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        font-family: 'helvetica neue';
+        text-align: center;
+        font-size: 10px;
+      }
+
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
+
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid #777777;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 35px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(
+          -3px
+        ); /* account for the height of the clock hands */
+      }
+
+      #clock-center {
+        position: absolute;
+        top: 48%;
+        left: 47%;
+        z-index: 1;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background: #5a5a5a;
+        border: 1px solid #afafaf;
+        box-shadow: 2px 2px 14px 0px #717171;
+      }
+
+      .second-hand {
+        background: #018ded;
+        height: 2px;
+      }
+      .min-hand {
+        background: #19af99;
+        height: 4px;
+      }
+      .hour-hand {
+        background: #717171;
+        height: 8px;
+      }
+
+      .hand {
+        width: 50%;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        box-shadow: 2px 2px 14px 0px #717171;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+      }
+    </style>
+
+    <script>
+      const secondHand = document.querySelector('.second-hand');
+      const minutesHand = document.querySelector('.min-hand');
+      const hoursHand = document.querySelector('.hour-hand');
+
+      function setDate() {
+        const now = new Date();
+
+        const seconds = now.getSeconds();
+        const secondsDegrees = (seconds / 60) * 360 + 90; // +90 so it starts from current second's position
+        secondHand.style.transform = `rotate(${-secondsDegrees}deg)`;
+
+        const minutes = now.getMinutes();
+        const minutesDegrees = (minutes / 60) * 360;
+        minutesHand.style.transform = `rotate(${-minutesDegrees}deg)`;
+
+        const hours = now.getHours();
+        const hoursDegrees = (hours / 12) * 360;
+        hoursHand.style.transform = `rotate(${-hoursDegrees}deg)`;
+      }
+      setInterval(setDate, 1000);
+    </script>
+  </body>
+</html>
