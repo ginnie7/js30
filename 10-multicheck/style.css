@@ -1,0 +1,81 @@
+html {
+  font-family: sans-serif;
+  background: #559ec1;
+}
+
+.inbox {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 42px;
+  width: 42px;
+}
+
+.checkmark {
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  margin: 20px;
+}
+
+.item:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.item input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.item input:checked ~ p {
+  text-decoration: line-through;
+}
+
+.checkmark:after {
+  content: '';
+  display: none;
+}
+
+.item input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.item .checkmark:after {
+  width: 19px;
+  height: 11px;
+  border: solid white;
+  border-width: 5px 5px 0 0;
+  -webkit-transform: rotate(130deg);
+  -ms-transform: rotate(130deg);
+  transform: rotate(130deg);
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+p {
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  flex: 1;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+  border-left: 1px solid #d1e2ff;
+}
