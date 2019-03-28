@@ -65,21 +65,6 @@
       src="https://images.unsplash.com/photo-1551421250-99978a013168?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=950&q=80"
     />
 
-    <script>
-      const inputs = document.querySelectorAll('.controls input');
-
-      function handleUpdate() {
-        const suffix = this.dataset.sizing || this.dataset.percentage || '';
-        document.documentElement.style.setProperty(
-          `--${this.name}`,
-          this.value + suffix
-        );
-      }
-
-      inputs.forEach(input => input.addEventListener('change', handleUpdate));
-      inputs.forEach(input =>
-        input.addEventListener('mousemove', handleUpdate)
-      );
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
