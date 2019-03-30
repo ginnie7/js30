@@ -10,7 +10,7 @@ A course by Wes Bos https://JavaScript30.com
 
 > Add styles to photos (update CSS vars with JS): https://ginius.me/js30/03-cssvars/
 
-> Flex panels: https://ginius.me/js30/02-crazyclock/
+> Flex panels: https://ginius.me/js30/05-flexpanels/
 
 > Get TLD (top-level domain) of any country really quick: https://ginius.me/js30/06-typeahead/
 
